@@ -12,18 +12,18 @@ This work is heavily inspired by https://github.com/caarmen/SunriseSunset. The f
 
 ## Project Status
 
-[![Maintenance](https://img.shields.io/maintenance/yes/2019.svg)](https://github.com/thatsIch/solar-time)
+[![Maintenance](https://img.shields.io/maintenance/yes/2024.svg)](https://github.com/sknull/solar-time)
 
-[![Build Status](https://travis-ci.org/thatsIch/solar-time.svg?branch=master)](https://travis-ci.org/thatsIch/solar-time)
+[![Build Status](https://travis-ci.org/sknull/solar-time.svg?branch=main)](https://travis-ci.org/sknull/solar-time)
 
-[![Codecov Coverage](https://codecov.io/gh/thatsIch/solar-time/branch/master/graph/badge.svg)](https://codecov.io/gh/thatsIch/solar-time)
-[![Coverage Status](https://coveralls.io/repos/github/thatsIch/solar-time/badge.svg?branch=master&kill_cache=1)](https://coveralls.io/github/thatsIch/solar-time?branch=master)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=thatsIch_solar-time&metric=coverage)](https://sonarcloud.io/component_measures?id=thatsIch_solar-time&metric=coverage&view=list)
+[![Codecov Coverage](https://codecov.io/gh/sknull/solar-time/branch/master/graph/badge.svg)](https://codecov.io/gh/sknull/solar-time)
+[![Coverage Status](https://coveralls.io/repos/github/sknull/solar-time/badge.svg?branch=master&kill_cache=1)](https://coveralls.io/github/sknull/solar-time?branch=master)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=sknull_solar-time&metric=coverage)](https://sonarcloud.io/component_measures?id=sknull_solar-time&metric=coverage&view=list)
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=thatsIch_solar-time&metric=alert_status)](https://sonarcloud.io/dashboard?id=thatsIch_solar-time)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=thatsIch_solar-time&metric=security_rating)](https://sonarcloud.io/dashboard?id=thatsIch_solar-time)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=thatsIch_solar-time&metric=sqale_index)](https://sonarcloud.io/dashboard?id=thatsIch_solar-time)
-[![Maintainability](https://api.codeclimate.com/v1/badges/7bebabb71ca31cf2aa8d/maintainability)](https://codeclimate.com/github/thatsIch/solar-time/maintainability)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=sknull_solar-time&metric=alert_status)](https://sonarcloud.io/dashboard?id=sknull_solar-time)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=sknull_solar-time&metric=security_rating)](https://sonarcloud.io/dashboard?id=sknull_solar-time)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=sknull_solar-time&metric=sqale_index)](https://sonarcloud.io/dashboard?id=sknull_solar-time)
+[![Maintainability](https://api.codeclimate.com/v1/badges/7bebabb71ca31cf2aa8d/maintainability)](https://codeclimate.com/github/sknull/solar-time/maintainability)
 
 ## Example Usage
 
@@ -52,4 +52,4 @@ LOGGER.info("is 24-hour day: " + sunStateChecker.is24HourDayTime(now, latitude, 
 
 > INFO: is 24-hour day: false
 
-For more examples check the [wiki](https://github.com/thatsIch/solar-time/wiki/Examples)
+For more examples check the [wiki](https://github.com/sknull/solar-time/wiki/Examples)
