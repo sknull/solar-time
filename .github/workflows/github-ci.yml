@@ -24,6 +24,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: mvn --batch-mode clean package -DskipTests -Pgithub
+      - uses: actions/upload-artifact@main
+        with:
+          name: dokka
+          path: ./target/dokka
 
       # Single deploy job since we're just deploying
   docs:
@@ -39,13 +43,17 @@ jobs:
       packages: write
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@main
+        with:
+          name: dokka
+          path: ./target/dokka
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: './target/dokka'
+          path: ./target/dokka
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
