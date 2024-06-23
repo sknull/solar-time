@@ -57,3 +57,7 @@ INFO: is 24-hour day: false
 ____
 
 For more examples check the https://github.com/sknull/solar-time/wiki/Examples[wiki]
+
+== KDoc
+
+The KDOc of this project can be found https://sknull.github.io/solar-time[here]
