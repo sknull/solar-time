@@ -14,7 +14,7 @@ class SolarTimeCheckerNauticalTwilightTest{
 
     @Test
     @DisplayName("At 2019-06-24T3:16:00+02:00[Europe/Berlin] is Nautical Twilight in Europe")
-    fun testinEarly() {
+    fun testInEarly() {
         val day = ZonedDateTime.of(2019, 6, 24, 3, 16, 0, 0, ZoneId.of("Europe/Berlin"))
         val latitude = 51.449680
         val longitude = 6.973370
@@ -27,13 +27,11 @@ class SolarTimeCheckerNauticalTwilightTest{
 
     @Test
     @DisplayName("At 2019-06-24T23:55:00+02:00[Europe/Berlin] is Nautical Twilight in Europe")
-    fun testinLater() {
+    fun testInLater() {
         val day = ZonedDateTime.of(2019, 6, 24, 23, 55, 0, 0, ZoneId.of("Europe/Berlin"))
         val latitude = 51.449680
         val longitude = 6.973370
 
-        calculateNauticalDusk(day, latitude, longitude)
-            ?.also { x: ZonedDateTime? -> println(x) }
         val actual = isNauticalTwilight(day, latitude, longitude)
 
         assertTrue(actual)
@@ -41,13 +39,11 @@ class SolarTimeCheckerNauticalTwilightTest{
 
     @Test
     @DisplayName("At 2019-06-24T03:00:00+02:00[Europe/Berlin] is no Nautical Twilight in Europe")
-    fun testbefore() {
+    fun testBefore() {
         val day = ZonedDateTime.of(2019, 6, 24, 3, 0, 0, 0, ZoneId.of("Europe/Berlin"))
         val latitude = 51.449680
         val longitude = 6.973370
 
-        calculateNauticalDusk(day, latitude, longitude)
-            ?.also { x: ZonedDateTime? -> println(x) }
         val actual = isNauticalTwilight(day, latitude, longitude)
 
         assertFalse(actual)
@@ -55,13 +51,11 @@ class SolarTimeCheckerNauticalTwilightTest{
 
     @Test
     @DisplayName("At 2019-06-24T12:00:00+02:00[Europe/Berlin] is no Nautical Twilight in Europe")
-    fun testbetweenBothTimeSpans() {
+    fun testBetweenBothTimeSpans() {
         val day = ZonedDateTime.of(2019, 6, 24, 12, 0, 0, 0, ZoneId.of("Europe/Berlin"))
         val latitude = 51.449680
         val longitude = 6.973370
 
-        calculateNauticalDusk(day, latitude, longitude)
-            ?.also { x: ZonedDateTime? -> println(x) }
         val actual = isNauticalTwilight(day, latitude, longitude)
 
         assertFalse(actual)
@@ -69,13 +63,11 @@ class SolarTimeCheckerNauticalTwilightTest{
 
     @Test
     @DisplayName("At 2019-06-24T23:55:00+02:00[Europe/Berlin] is no Nautical Twilight in Europe")
-    fun testafter() {
+    fun testAfter() {
         val day = ZonedDateTime.of(2019, 6, 24, 23, 59, 0, 0, ZoneId.of("Europe/Berlin"))
         val latitude = 51.449680
         val longitude = 6.973370
 
-        calculateNauticalDusk(day, latitude, longitude)
-            ?.also { x: ZonedDateTime? -> println(x) }
         val actual = isNauticalTwilight(day, latitude, longitude)
 
         assertFalse(actual)

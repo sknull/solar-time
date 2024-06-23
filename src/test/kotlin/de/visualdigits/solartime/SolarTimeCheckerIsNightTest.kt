@@ -12,7 +12,7 @@ class SolarTimeCheckerIsNightTest{
 
     @Test
     @DisplayName("Before dawn is night")
-    fun testbeforeDawn() {
+    fun testBeforeDawn() {
         val day = ZonedDateTime.of(2019, 1, 24, 1, 0, 0, 0, ZoneId.of("Europe/Berlin"))
         val latitude = 51.449680
         val longitude = 6.973370
@@ -25,7 +25,7 @@ class SolarTimeCheckerIsNightTest{
 
     @Test
     @DisplayName("After dusk is night")
-    fun testafterDusk() {
+    fun testAfterDusk() {
         val day = ZonedDateTime.of(2019, 1, 24, 23, 0, 0, 0, ZoneId.of("Europe/Berlin"))
         val latitude = 51.449680
         val longitude = 6.973370
@@ -38,7 +38,7 @@ class SolarTimeCheckerIsNightTest{
 
     @Test
     @DisplayName("While day is no night")
-    fun testwhileDay() {
+    fun testWhileDay() {
         val day = ZonedDateTime.of(2019, 1, 24, 12, 0, 0, 0, ZoneId.of("Europe/Berlin"))
         val latitude = 51.449680
         val longitude = 6.973370

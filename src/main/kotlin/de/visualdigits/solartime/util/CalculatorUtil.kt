@@ -14,12 +14,14 @@ import kotlin.math.tan
 
 class CalculatorUtil {
 
-    private val EARTH_MAX_TILT_TOWARDS_SUN = 23.439
+    companion object {
+        private const val EARTH_MAX_TILT_TOWARDS_SUN = 23.439
 
-    private val DAYS_PER_4000_YEARS = 146097
-    private val DAYS_PER_CENTURY = 36524
-    private val DAYS_PER_4_YEARS = 1461
-    private val DAYS_PER_5_MONTHS = 153
+        private const val DAYS_PER_4000_YEARS = 146097
+        private const val DAYS_PER_CENTURY = 36524
+        private const val DAYS_PER_4_YEARS = 1461
+        private const val DAYS_PER_5_MONTHS = 153
+    }
 
     /**
      * sunrise
@@ -35,7 +37,7 @@ class CalculatorUtil {
     ): ZonedDateTime? {
         return calculateJulianSunrise(day, latitude, longitude, altitude)
             ?.let { julianDate: Double -> toGregorianDate(julianDate) }
-            ?.let { sunrise: ZonedDateTime? -> shiftDayToZoneOfOtherDay(sunrise, day) }
+            ?.let { sunrise -> shiftDayToZoneOfOtherDay(sunrise, day) }
     }
 
     /**
@@ -57,10 +59,10 @@ class CalculatorUtil {
     ): ZonedDateTime? {
         return calculateJulianSunset(day, latitude, longitude, altitude)
             ?.let { julianDate: Double -> toGregorianDate(julianDate) }
-            ?.let { duskEvent: ZonedDateTime? -> shiftDayToZoneOfOtherDay(duskEvent, day) }
+            ?.let { duskEvent -> shiftDayToZoneOfOtherDay(duskEvent, day) }
     }
 
-    fun calculateHourAngle(altitude: Altitude, latitudeRad: Double, sunDeclination: Double): Double? {
+    private fun calculateHourAngle(altitude: Altitude, latitudeRad: Double, sunDeclination: Double): Double? {
         val radAltitude = Math.toRadians(altitude.value)
         val omega = acos((sin(radAltitude) - sin(latitudeRad) * sin(sunDeclination)) / (cos(latitudeRad) * cos(sunDeclination)))
 
@@ -79,7 +81,7 @@ class CalculatorUtil {
         return tan(latitudeRad) * tan(sunDeclination) < -1
     }
 
-    fun calculateJulianSunrise(
+    private fun calculateJulianSunrise(
         day: ZonedDateTime,
         latitude: Double,
         longitude: Double,
@@ -90,12 +92,11 @@ class CalculatorUtil {
             val solarEquationVariables =
                 calculateSolarEquationVariables(day, longitude)
             // Sunrise
-            val jrise = solarEquationVariables.jtransit - (sunset - solarEquationVariables.jtransit)
-            jrise
+            solarEquationVariables.jtransit - (sunset - solarEquationVariables.jtransit)
         }
     }
 
-    fun calculateJulianSunset(
+    private fun calculateJulianSunset(
         day: ZonedDateTime,
         latitude: Double,
         longitude: Double,
@@ -109,9 +110,9 @@ class CalculatorUtil {
         // Hour angle
         val maybeOmega = calculateHourAngle(altitude, latitudeRad, solarEquationVariables.delta)
 
-        return maybeOmega?.let { omega: Double? ->
+        return maybeOmega?.let { omega ->
             // Sunset
-            JulianConstants.JULIAN_DATE_2000_01_01 + JulianConstants.CONST_0009 + ((Math.toDegrees(omega!!) + inverted) / JulianConstants.CONST_360 + solarEquationVariables.n + (0.0053 * sin(solarEquationVariables.m)) - 0.0069 * sin(2 * solarEquationVariables.lambda))
+            JulianConstants.JULIAN_DATE_2000_01_01 + JulianConstants.CONST_0009 + ((Math.toDegrees(omega) + inverted) / JulianConstants.CONST_360 + solarEquationVariables.n + (0.0053 * sin(solarEquationVariables.m)) - 0.0069 * sin(2 * solarEquationVariables.lambda))
         }
     }
 
@@ -186,16 +187,16 @@ class CalculatorUtil {
             latitudeRad,
             solarEquationVariables.delta
         )
-            ?.let { omega: Double? ->
+            ?.let { _ ->
                 // Convert jtransit Gregorian dates, in UTC
                 val localTimeNoon = toGregorianDate(solarEquationVariables.jtransit)
                 val zone = day.zone
-                val noonWithMovedTimeZone = localTimeNoon!!.withZoneSameInstant(zone)
+                val noonWithMovedTimeZone = localTimeNoon.withZoneSameInstant(zone)
                 noonWithMovedTimeZone
             }
     }
 
-    fun shiftDayToZoneOfOtherDay(toBeShifted: ZonedDateTime?, otherDay: ZonedDateTime): ZonedDateTime {
+    private fun shiftDayToZoneOfOtherDay(toBeShifted: ZonedDateTime?, otherDay: ZonedDateTime): ZonedDateTime {
         val zone = otherDay.zone
         val shifted = toBeShifted!!.withZoneSameInstant(zone)
 
@@ -249,12 +250,12 @@ class CalculatorUtil {
     fun toGregorianDate(julianDate: Double): ZonedDateTime {
         // this shifts the epoch back by one half day,
         // to start it at 00:00UTC, instead of 12:00 UTC
-        val J = (julianDate + 0.5).toInt()
+        val jd = (julianDate + 0.5).toInt()
 
         // this shifts the epoch back to astronomical
         // year -4800 instead of the start of the Christian era in year AD 1 of
         // the proleptic Gregorian calendar
-        val j = J + 32044
+        val j = jd + 32044
 
         val g = j / DAYS_PER_4000_YEARS
         val dg = j % DAYS_PER_4000_YEARS
@@ -285,7 +286,7 @@ class CalculatorUtil {
         // Apply the fraction of the day in the Julian date to the Gregorian
         // date.
         // Example: dayFraction = 0.717
-        val dayFraction = (julianDate + 0.5) - J
+        val dayFraction = (julianDate + 0.5) - jd
 
         // Ex: 0.717*24 = 17.208 hours. We truncate to 17 hours.
         val hours = (dayFraction * 24).toInt()
