@@ -1,5 +1,5 @@
 # Solar Time
-Java Library, Calculate solar times like solar noon, sunrise, sunset, astronomical, nautical and civil dawn/dusks
+Kotlin Library, Calculate solar times like solar noon, sunrise, sunset, astronomical, nautical and civil dawn/dusks
 
 ---
 
@@ -24,25 +24,23 @@ This work is heavily inspired by https://github.com/caarmen/SunriseSunset. The f
 
 Entrypoint is the `API`. You can instatiate it via `new API()` to retrieve the `SolarTime` and `SunStateChecker` endpoints.
 
-```java
-final var api = new API();
-final var solarTime = api.getSolarTime();
+```kotlin
 
-final var now = ZonedDateTime.now();
-final var latitude = 51.449680;
-final var longitude = 6.973370;
+val now = ZonedDateTime.now();
+val latitude = 51.449680;
+val longitude = 6.973370;
 
-solarTime.calculateNauticalDawn(now, latitude, longitude)
-        .map(dateTime -> dateTime.withZoneSameInstant(ZoneId.systemDefault()))
-        .map(ZonedDateTime::toLocalDateTime)
-        .ifPresent(time -> LOGGER.info("Nautical Dawn: " + time));
+SolarTime.calculateNauticalDawn(now, latitude, longitude)
+        ?.map { it.withZoneSameInstant(ZoneId.systemDefault()) }
+        ?.map { it.toLocalDateTime }
+        ?.also {println("Nautical Dawn: $it") }
 ```
 
 > INFO: Nautical Dawn: 2019-06-25T03:15:46
 
-```java
-final var sunStateChecker = api.getSunStateChecker();
-LOGGER.info("is 24-hour day: " + sunStateChecker.is24HourDayTime(now, latitude, longitude));
+```kotlin
+val sunStateChecker = SolarTime.getSunStateChecker();
+println("is 24-hour day: ${sunStateChecker.is24HourDayTime(now, latitude, longitude)}")
 ```
 
 > INFO: is 24-hour day: false

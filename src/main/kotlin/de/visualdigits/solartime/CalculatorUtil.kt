@@ -1,8 +1,8 @@
-package de.visualdigits.solartime.control
+package de.visualdigits.solartime
 
-import de.visualdigits.solartime.entity.Altitude
-import de.visualdigits.solartime.entity.JulianConstants
-import de.visualdigits.solartime.entity.SolarEquationVariables
+import de.visualdigits.solartime.model.Altitude
+import de.visualdigits.solartime.model.JulianConstants
+import de.visualdigits.solartime.model.SolarEquationVariables
 import java.time.ZoneId
 import java.time.ZoneOffset
 import java.time.ZonedDateTime

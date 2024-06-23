@@ -1,12 +1,11 @@
-package de.visualdigits.solartime.boundary
+package de.visualdigits.solartime
 
-import de.visualdigits.solartime.control.CalculatorUtil
-import de.visualdigits.solartime.control.CalculatorUtil.calculateDawnEvent
-import de.visualdigits.solartime.control.CalculatorUtil.calculateDuskEvent
-import de.visualdigits.solartime.control.CalculatorUtil.calculateSolarEquationVariables
-import de.visualdigits.solartime.entity.Altitude
-import de.visualdigits.solartime.entity.DayPeriod
-import de.visualdigits.solartime.entity.TimeSpan
+import de.visualdigits.solartime.CalculatorUtil.calculateDawnEvent
+import de.visualdigits.solartime.CalculatorUtil.calculateDuskEvent
+import de.visualdigits.solartime.CalculatorUtil.calculateSolarEquationVariables
+import de.visualdigits.solartime.model.Altitude
+import de.visualdigits.solartime.model.DayPeriod
+import de.visualdigits.solartime.model.TimeSpan
 import java.time.Instant
 import java.time.ZonedDateTime
 import kotlin.math.tan

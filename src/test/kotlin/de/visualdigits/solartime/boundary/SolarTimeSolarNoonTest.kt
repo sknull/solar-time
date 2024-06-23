@@ -1,6 +1,6 @@
 package de.visualdigits.solartime.boundary
 
-import de.visualdigits.solartime.boundary.SolarTime.calculateSolarNoon
+import de.visualdigits.solartime.SolarTime.calculateSolarNoon
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
 import java.time.ZoneId

@@ -1,7 +1,7 @@
 package de.visualdigits.solartime.control
 
-import de.visualdigits.solartime.control.CalculatorUtil.toGregorianDate
-import de.visualdigits.solartime.control.CalculatorUtil.toJulianDate
+import de.visualdigits.solartime.CalculatorUtil.toGregorianDate
+import de.visualdigits.solartime.CalculatorUtil.toJulianDate
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.params.ParameterizedTest

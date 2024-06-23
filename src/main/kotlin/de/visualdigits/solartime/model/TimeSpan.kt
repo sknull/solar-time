@@ -1,4 +1,4 @@
-package de.visualdigits.solartime.entity
+package de.visualdigits.solartime.model
 
 import java.time.ZonedDateTime
 

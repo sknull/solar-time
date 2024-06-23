@@ -1,6 +1,6 @@
 package de.visualdigits.solartime.boundary
 
-import de.visualdigits.solartime.boundary.SolarTime.calculateSunset
+import de.visualdigits.solartime.SolarTime.calculateSunset
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.DisplayName

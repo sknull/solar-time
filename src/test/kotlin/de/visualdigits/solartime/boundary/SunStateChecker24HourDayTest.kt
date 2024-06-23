@@ -1,6 +1,6 @@
 package de.visualdigits.solartime.boundary
 
-import de.visualdigits.solartime.boundary.SolarTime.is24HourDayTime
+import de.visualdigits.solartime.SolarTime.is24HourDayTime
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test

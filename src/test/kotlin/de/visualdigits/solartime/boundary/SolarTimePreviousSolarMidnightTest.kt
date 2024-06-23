@@ -1,6 +1,6 @@
 package de.visualdigits.solartime.boundary
 
-import de.visualdigits.solartime.boundary.SolarTime.calculatePreviousSolarMidnight
+import de.visualdigits.solartime.SolarTime.calculatePreviousSolarMidnight
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Test

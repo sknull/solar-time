@@ -1,4 +1,4 @@
-package de.visualdigits.solartime.entity
+package de.visualdigits.solartime.model
 
 object JulianConstants {
     const val JULIAN_DATE_2000_01_01: Int = 2451545

@@ -1,7 +1,7 @@
 package de.visualdigits.solartime.boundary
 
-import de.visualdigits.solartime.boundary.SolarTime.getDayPeriod
-import de.visualdigits.solartime.entity.DayPeriod
+import de.visualdigits.solartime.SolarTime.getDayPeriod
+import de.visualdigits.solartime.model.DayPeriod
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 import java.time.ZoneId

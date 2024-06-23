@@ -1,6 +1,6 @@
 package de.visualdigits.solartime.boundary
 
-import de.visualdigits.solartime.boundary.SolarTime.is24HourNightTime
+import de.visualdigits.solartime.SolarTime.is24HourNightTime
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 import java.time.ZoneId

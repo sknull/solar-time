@@ -1,7 +1,7 @@
 package de.visualdigits.solartime.boundary
 
-import de.visualdigits.solartime.boundary.SolarTime.calculateNauticalDusk
-import de.visualdigits.solartime.boundary.SolarTime.isNauticalTwilight
+import de.visualdigits.solartime.SolarTime.calculateNauticalDusk
+import de.visualdigits.solartime.SolarTime.isNauticalTwilight
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
