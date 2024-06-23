@@ -203,7 +203,7 @@
             </plugin>
 
             <!-- attach sources -->
-            <plugin>
+            <!--plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
                 <version>3.3.0</version>
@@ -215,7 +215,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin-->
 
             <!-- KDoc -->
             <!-- delete current KDoc -->
