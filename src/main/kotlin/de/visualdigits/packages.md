@@ -1,4 +1,4 @@
-# package de.visualdigits.solartime
+# Package de.visualdigits.solartime
 
 Java utility which provides methods to determine the sunrise, sunset, civil twilight,
 nautical twilight, and astronomical twilight times of a given
