@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
-class SolarTimeNauticalDuskTest{
+class SolarTimeNauticalDuskTest {
 
     protected val calculatorUtil = CalculatorUtil()
 

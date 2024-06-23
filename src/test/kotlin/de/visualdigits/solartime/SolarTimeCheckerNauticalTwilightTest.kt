@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
-class SolarTimeCheckerNauticalTwilightTest{
+class SolarTimeCheckerNauticalTwilightTest {
 
     @Test
     @DisplayName("At 2019-06-24T3:16:00+02:00[Europe/Berlin] is Nautical Twilight in Europe")

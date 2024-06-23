@@ -10,6 +10,7 @@ import java.time.ZonedDateTime
 class SolarTimeTest {
 
     private val now = OffsetDateTime.now().toZonedDateTime()// .of(2024, 12,24, 12, 0, 0,0, ZoneId.systemDefault())
+
     // Coordinates of Hamburg, Germany
     private val lat = 53.551
     private val lon = 9.994

@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
-class SolarTimePreviousSolarMidnightTest{
+class SolarTimePreviousSolarMidnightTest {
 
     protected val calculatorUtil = CalculatorUtil()
 

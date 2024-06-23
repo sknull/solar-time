@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
-class SolarTimeCheckerTwilightTest{
+class SolarTimeCheckerTwilightTest {
 
     @Test
     @DisplayName("At 2019-01-24T12:00:00+02:00[Europe/Berlin] is no Twilight in Europe")

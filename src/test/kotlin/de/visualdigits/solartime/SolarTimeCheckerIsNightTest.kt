@@ -8,7 +8,7 @@ import java.time.ZoneId
 import java.time.ZonedDateTime
 
 @DisplayName("Is Night")
-class SolarTimeCheckerIsNightTest{
+class SolarTimeCheckerIsNightTest {
 
     @Test
     @DisplayName("Before dawn is night")
