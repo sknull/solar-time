@@ -6,16 +6,13 @@ on:
       - main
       - develop
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  id-token: write
-  pages: write
-  contents: read
-  issues: write
-  packages: write
 
 jobs:
-  publish:
+  build:
+    permissions:
+      contents: read
+      issues: write
+      packages: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -29,6 +26,19 @@ jobs:
         run: mvn --batch-mode clean package -DskipTests -Pgithub
 
       # Single deploy job since we're just deploying
+  docs:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      id-token: write
+      pages: write
+      contents: read
+      issues: write
+      packages: write
+    runs-on: ubuntu-latest
+    steps:
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
