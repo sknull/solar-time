@@ -13,6 +13,7 @@ This work is heavily inspired by https://github.com/caarmen/SunriseSunset. The f
 == Project Status
 
 image:https://img.shields.io/maintenance/yes/2024.svg[Maintenance,link=https://github.com/sknull/solar-time]
+image:https://github.com/sknull/solar-time/actions/workflows/github-ci.yml/badge.svg[Build Status,link=https://github.com/sknull/solar-time]
 
 
 == Example Usage
