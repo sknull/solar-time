@@ -22,7 +22,7 @@ This work is heavily inspired by https://github.com/caarmen/SunriseSunset. The f
 
 ## Example Usage
 
-Entrypoint is the `API`. You can instatiate it via `new API()` to retrieve the `SolarTime` and `SunStateChecker` endpoints.
+Entrypoint is the `SolarTime` object.
 
 ```kotlin
 
