@@ -1,0 +1,59 @@
+= Solar Time
+
+Kotlin Library, Calculate solar times like solar noon, sunrise, sunset, astronomical, nautical and civil dawn/dusks
+
+'''
+
+This work is heavily inspired by https://github.com/caarmen/SunriseSunset. The fundamental changes are:
+
+* requires Java 17+,
+* requires Kotlin 1.9+
+* complete rework to Kotlin
+
+== Project Status
+
+image:https://img.shields.io/maintenance/yes/2024.svg[Maintenance,link=https://github.com/sknull/solar-time]
+
+image:https://travis-ci.org/sknull/solar-time.svg?branch=main[Build Status,link=https://travis-ci.org/sknull/solar-time]
+
+image:https://codecov.io/gh/sknull/solar-time/branch/master/graph/badge.svg[Codecov Coverage,link=https://codecov.io/gh/sknull/solar-time]
+image:https://coveralls.io/repos/github/sknull/solar-time/badge.svg?branch=master&kill_cache=1[Coverage Status,link=https://coveralls.io/github/sknull/solar-time?branch=master]
+
+image:https://api.codeclimate.com/v1/badges/7bebabb71ca31cf2aa8d/maintainability[Maintainability,link=https://codeclimate.com/github/sknull/solar-time/maintainability]
+
+== Example Usage
+
+Entrypoint is the `SolarTime` object.
+
+[source,kotlin]
+----
+
+val now = ZonedDateTime.now()
+val latitude = 51.449680
+val longitude = 6.973370
+
+SolarTime.calculateNauticalDawn(now, latitude, longitude)
+        ?.map { it.withZoneSameInstant(ZoneId.systemDefault()) }
+        ?.map { it.toLocalDateTime }
+        ?.also {println("Nautical Dawn: $it") }
+----
+
+____
+
+INFO: Nautical Dawn: 2019-06-25T03:15:46
+
+____
+
+[source,kotlin]
+----
+val sunStateChecker = SolarTime.getSunStateChecker()
+println("is 24-hour day: ${sunStateChecker.is24HourDayTime(now, latitude, longitude)}")
+----
+
+____
+
+INFO: is 24-hour day: false
+
+____
+
+For more examples check the https://github.com/sknull/solar-time/wiki/Examples[wiki]
