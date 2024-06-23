@@ -26,9 +26,9 @@ Entrypoint is the `API`. You can instatiate it via `new API()` to retrieve the `
 
 ```kotlin
 
-val now = ZonedDateTime.now();
-val latitude = 51.449680;
-val longitude = 6.973370;
+val now = ZonedDateTime.now()
+val latitude = 51.449680
+val longitude = 6.973370
 
 SolarTime.calculateNauticalDawn(now, latitude, longitude)
         ?.map { it.withZoneSameInstant(ZoneId.systemDefault()) }
@@ -39,7 +39,7 @@ SolarTime.calculateNauticalDawn(now, latitude, longitude)
 > INFO: Nautical Dawn: 2019-06-25T03:15:46
 
 ```kotlin
-val sunStateChecker = SolarTime.getSunStateChecker();
+val sunStateChecker = SolarTime.getSunStateChecker()
 println("is 24-hour day: ${sunStateChecker.is24HourDayTime(now, latitude, longitude)}")
 ```
 
