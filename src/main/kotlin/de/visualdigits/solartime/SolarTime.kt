@@ -115,6 +115,32 @@ object SolarTime {
         return calculateDuskEvent(day, latitude, longitude, Altitude.CIVIL)
     }
 
+    /**
+     * Calculate the twilight time when to switch off lights.
+     *
+     * @param day       The day for which to calculate civil twilight
+     * @param latitude  the latitude of the location in degrees.
+     * @param longitude the longitude of the location in degrees (West is negative)
+     *
+     * @return civil dawn or empty if there is no civil twilight (e.g. no twilight in Antarctica in December)
+     */
+    fun calculateLightsOff(day: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
+        return calculateDawnEvent(day, latitude, longitude, Altitude.LIGHTS)
+    }
+
+    /**
+     * Calculate the twilight time to switch lights on.
+     *
+     * @param day       The day for which to calculate civil twilight
+     * @param latitude  the latitude of the location in degrees.
+     * @param longitude the longitude of the location in degrees (West is negative)
+     *
+     * @return civil dusk or empty if there is no civil twilight (e.g. no twilight in Antarctica in December)
+     */
+    fun calculateLightsOn(day: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
+        return calculateDuskEvent(day, latitude, longitude, Altitude.LIGHTS)
+    }
+
 
     fun calculateSunrise(day: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
         return calculateDawnEvent(day, latitude, longitude, Altitude.SUNRISE_SUNSET)

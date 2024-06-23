@@ -11,6 +11,11 @@ enum class Altitude(val degreesBelowHorizon: Double) {
     SUNRISE_SUNSET(-0.833),
 
     /**
+     * The altitude of the sun (solar elevation angle) whne to turn on / off lights.
+     */
+    LIGHTS(-3.0),
+
+    /**
      * The altitude of the sun (solar elevation angle) at the moment of civil twilight: -6.0
      */
     CIVIL(-6.0),
