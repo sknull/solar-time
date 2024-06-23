@@ -1,6 +1,7 @@
-package de.visualdigits.solartime.boundary
+package de.visualdigits.solartime
 
 import de.visualdigits.solartime.SolarTime.calculateSunrise
+import de.visualdigits.solartime.util.CalculatorUtil
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.DisplayName
@@ -8,10 +9,13 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvFileSource
 import java.time.ZonedDateTime
 
-internal class SolarTimeSunriseTest {
+class SolarTimeSunriseTest {
+
+    protected val calculatorUtil = CalculatorUtil()
+
     @DisplayName("sunrise exists")
     @ParameterizedTest(name = "{index}. {0} => day={1}, latitude={2}, longitude={3}")
-    @CsvFileSource(numLinesToSkip = 1, resources = ["./sunrise-sunet.csv"])
+    @CsvFileSource(numLinesToSkip = 1, resources = ["sunrise-sunet.csv"])
     fun testSunriseExists(
         @Suppress("unused") location: String?,
         day: ZonedDateTime?,
@@ -25,7 +29,7 @@ internal class SolarTimeSunriseTest {
 
     @DisplayName("sunrise exists")
     @ParameterizedTest(name = "{index}. {0} => day={1}, latitude={2}, longitude={3}, sunrise={4}")
-    @CsvFileSource(numLinesToSkip = 1, resources = ["./sunrise-sunet.csv"])
+    @CsvFileSource(numLinesToSkip = 1, resources = ["sunrise-sunet.csv"])
     fun testSunriseIsExact(
         @Suppress("unused") location: String?,
         day: ZonedDateTime?,

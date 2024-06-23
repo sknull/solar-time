@@ -1,4 +1,4 @@
-package de.visualdigits.solartime
+package de.visualdigits.solartime.util
 
 import de.visualdigits.solartime.model.Altitude
 import de.visualdigits.solartime.model.JulianConstants
@@ -12,14 +12,14 @@ import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.math.tan
 
-object CalculatorUtil {
+class CalculatorUtil {
 
-    private const val EARTH_MAX_TILT_TOWARDS_SUN = 23.439
+    private val EARTH_MAX_TILT_TOWARDS_SUN = 23.439
 
-    private const val DAYS_PER_4000_YEARS = 146097
-    private const val DAYS_PER_CENTURY = 36524
-    private const val DAYS_PER_4_YEARS = 1461
-    private const val DAYS_PER_5_MONTHS = 153
+    private val DAYS_PER_4000_YEARS = 146097
+    private val DAYS_PER_CENTURY = 36524
+    private val DAYS_PER_4_YEARS = 1461
+    private val DAYS_PER_5_MONTHS = 153
 
     /**
      * sunrise

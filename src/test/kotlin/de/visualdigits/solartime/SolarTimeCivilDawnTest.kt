@@ -1,12 +1,16 @@
-package de.visualdigits.solartime.boundary
+package de.visualdigits.solartime
 
 import de.visualdigits.solartime.SolarTime.calculateCivilDawn
+import de.visualdigits.solartime.util.CalculatorUtil
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
-internal class SolarTimeCivilDawnTest {
+class SolarTimeCivilDawnTest{
+
+    protected val calculatorUtil = CalculatorUtil()
+
     @Test
     fun testCivilDawnIsPresent() {
         val day = ZonedDateTime.of(2019, 6, 24, 12, 0, 0, 0, ZoneId.of("Europe/Berlin"))

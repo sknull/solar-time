@@ -1,4 +1,4 @@
-package de.visualdigits.solartime.boundary
+package de.visualdigits.solartime
 
 import de.visualdigits.solartime.SolarTime.is24HourDayTime
 import org.assertj.core.api.Assertions
@@ -7,7 +7,8 @@ import org.junit.jupiter.api.Test
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
-internal class SunStateChecker24HourDayTest {
+class SolarTimeChecker24HourDayTest{
+
     @Test
     fun testisNot24HourDayTime()
         {

@@ -1,4 +1,4 @@
-package de.visualdigits.solartime.boundary
+package de.visualdigits.solartime
 
 import de.visualdigits.solartime.SolarTime.isDay
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -11,11 +11,11 @@ import org.junit.jupiter.params.provider.CsvSource
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
-internal class SunStateCheckerIsDayTest {
+class SolarTimeCheckerIsDayTest {
 
     @Test
     @DisplayName("At 2019-06-24T12:00:00+02:00[Europe/Berlin] is Day in Europe")
-    fun happyPath_dayIsAfterSunriseAndBeforeSunset() {
+    fun testhappyPath_dayIsAfterSunriseAndBeforeSunset() {
         val day = ZonedDateTime.of(2019, 6, 24, 12, 0, 0, 0, ZoneId.of("Europe/Berlin"))
         val latitude = 51.449680
         val longitude = 6.973370
@@ -27,7 +27,7 @@ internal class SunStateCheckerIsDayTest {
 
     @Test
     @DisplayName("At 2019-06-24T01:00:00+02:00[Europe/Berlin] is before Day in Europe")
-    fun beforeDay() {
+    fun testbeforeDay() {
         val day = ZonedDateTime.of(2019, 6, 24, 1, 0, 0, 0, ZoneId.of("Europe/Berlin"))
         val latitude = 51.449680
         val longitude = 6.973370
@@ -39,7 +39,7 @@ internal class SunStateCheckerIsDayTest {
 
     @Test
     @DisplayName("At 2019-06-24T23:00:00+02:00[Europe/Berlin] is after Day in Europe")
-    fun afterDay() {
+    fun testafterDay() {
         val day = ZonedDateTime.of(2019, 6, 24, 23, 0, 0, 0, ZoneId.of("Europe/Berlin"))
         val latitude = 51.449680
         val longitude = 6.973370

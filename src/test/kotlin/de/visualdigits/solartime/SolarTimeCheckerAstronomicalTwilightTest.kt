@@ -1,4 +1,4 @@
-package de.visualdigits.solartime.boundary
+package de.visualdigits.solartime
 
 import de.visualdigits.solartime.SolarTime.isAstronomicalTwilight
 import org.assertj.core.api.Assertions
@@ -6,7 +6,8 @@ import org.junit.jupiter.api.Test
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
-internal class SunStateCheckerAstronomicalTwilightTest {
+class SolarTimeCheckerAstronomicalTwilightTest{
+
     @Test
     fun testIsAstronomicalTwilight()
         {

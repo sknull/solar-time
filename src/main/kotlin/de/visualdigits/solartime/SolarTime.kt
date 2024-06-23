@@ -1,11 +1,9 @@
 package de.visualdigits.solartime
 
-import de.visualdigits.solartime.CalculatorUtil.calculateDawnEvent
-import de.visualdigits.solartime.CalculatorUtil.calculateDuskEvent
-import de.visualdigits.solartime.CalculatorUtil.calculateSolarEquationVariables
 import de.visualdigits.solartime.model.Altitude
 import de.visualdigits.solartime.model.DayPeriod
 import de.visualdigits.solartime.model.TimeSpan
+import de.visualdigits.solartime.util.CalculatorUtil
 import java.time.Instant
 import java.time.ZonedDateTime
 import kotlin.math.tan
@@ -23,6 +21,8 @@ import kotlin.math.tan
  * @see [Sunrise equation on Wikipedia](http://en.wikipedia.org/wiki/Sunrise_equation)
  */
 object SolarTime {
+
+    private val calculatorUtil = CalculatorUtil()
 
     fun calculatePreviousSolarMidnight(
         day: ZonedDateTime,
@@ -48,7 +48,7 @@ object SolarTime {
      * @return astronomical dawn or empty if there is no astronomical twilight (e.g. no twilight in Antarctica in December)
      */
     fun calculateAstronomicalDawn(day: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
-        return calculateDawnEvent(day, latitude, longitude, Altitude.ASTRONOMICAL)
+        return calculatorUtil.calculateDawnEvent(day, latitude, longitude, Altitude.ASTRONOMICAL)
     }
 
     /**
@@ -61,7 +61,7 @@ object SolarTime {
      * @return nautical dawn or empty if there is no nautical twilight (e.g. no twilight in Antarctica in December)
      */
     fun calculateNauticalDawn(day: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
-        return calculateDawnEvent(day, latitude, longitude, Altitude.NAUTICAL)
+        return calculatorUtil.calculateDawnEvent(day, latitude, longitude, Altitude.NAUTICAL)
     }
 
     /**
@@ -74,19 +74,19 @@ object SolarTime {
      * @return civil dawn or empty if there is no civil twilight (e.g. no twilight in Antarctica in December)
      */
     fun calculateCivilDawn(day: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
-        return calculateDawnEvent(day, latitude, longitude, Altitude.CIVIL)
+        return calculatorUtil.calculateDawnEvent(day, latitude, longitude, Altitude.CIVIL)
     }
 
     fun calculateSunrise(day: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
-        return calculateDawnEvent(day, latitude, longitude, Altitude.SUNRISE_SUNSET)
+        return calculatorUtil.calculateDawnEvent(day, latitude, longitude, Altitude.SUNRISE_SUNSET)
     }
 
     fun calculateSolarNoon(day: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
-        return CalculatorUtil.calculateSolarNoon(day, latitude, longitude)
+        return calculatorUtil.calculateSolarNoon(day, latitude, longitude)
     }
 
     fun calculateSunset(day: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
-        return calculateDuskEvent(day, latitude, longitude, Altitude.SUNRISE_SUNSET)
+        return calculatorUtil.calculateDuskEvent(day, latitude, longitude, Altitude.SUNRISE_SUNSET)
     }
 
     /**
@@ -99,7 +99,7 @@ object SolarTime {
      * @return civil dusk or empty if there is no civil twilight (e.g. no twilight in Antarctica in December)
      */
     fun calculateCivilDusk(day: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
-        return calculateDuskEvent(day, latitude, longitude, Altitude.CIVIL)
+        return calculatorUtil.calculateDuskEvent(day, latitude, longitude, Altitude.CIVIL)
     }
 
     /**
@@ -112,7 +112,7 @@ object SolarTime {
      * @return nautical dusk or empty if there is no nautical twilight (e.g. no twilight in Antarctica in December)
      */
     fun calculateNauticalDusk(day: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
-        return calculateDuskEvent(day, latitude, longitude, Altitude.NAUTICAL)
+        return calculatorUtil.calculateDuskEvent(day, latitude, longitude, Altitude.NAUTICAL)
     }
 
     /**
@@ -125,7 +125,7 @@ object SolarTime {
      * @return astronomical dusk or empty if there is no astronomical twilight (e.g. no twilight in Antarctica in December)
      */
     fun calculateAstronomicalDusk(day: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
-        return calculateDuskEvent(day, latitude, longitude, Altitude.ASTRONOMICAL)
+        return calculatorUtil.calculateDuskEvent(day, latitude, longitude, Altitude.ASTRONOMICAL)
     }
 
     fun calculateNextSolarMidnight(day: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
@@ -286,7 +286,7 @@ object SolarTime {
     }
 
     fun is24HourDayTime(day: ZonedDateTime, latitude: Double, longitude: Double): Boolean {
-        val solarEquationVariables = calculateSolarEquationVariables(day, longitude)
+        val solarEquationVariables = calculatorUtil.calculateSolarEquationVariables(day, longitude)
         val sunDeclination = solarEquationVariables.delta
         val rads = Math.toRadians(latitude)
 
@@ -294,7 +294,7 @@ object SolarTime {
     }
 
     fun is24HourNightTime(day: ZonedDateTime, latitude: Double, longitude: Double): Boolean {
-        val solarEquationVariables = calculateSolarEquationVariables(day, longitude)
+        val solarEquationVariables = calculatorUtil.calculateSolarEquationVariables(day, longitude)
         val sunDeclination = solarEquationVariables.delta
         val rads = Math.toRadians(latitude)
 

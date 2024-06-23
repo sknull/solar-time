@@ -1,12 +1,16 @@
-package de.visualdigits.solartime.boundary
+package de.visualdigits.solartime
 
 import de.visualdigits.solartime.SolarTime.is24HourNightTime
+import de.visualdigits.solartime.util.CalculatorUtil
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
-internal class SunStateChecker24NightDayTest {
+class SolarTimeChecker24NightDayTest{
+
+    protected val calculatorUtil = CalculatorUtil()
+
     @Test
     fun testIsAbsent()
         {

@@ -1,13 +1,17 @@
-package de.visualdigits.solartime.boundary
+package de.visualdigits.solartime
 
 import de.visualdigits.solartime.SolarTime.getDayPeriod
 import de.visualdigits.solartime.model.DayPeriod
+import de.visualdigits.solartime.util.CalculatorUtil
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
-internal class SunStateCheckerDayPeriodTest {
+class SolarTimeCheckerDayPeriodTest{
+
+    protected val calculatorUtil = CalculatorUtil()
+
     @Test
     fun testIsDay()
         {

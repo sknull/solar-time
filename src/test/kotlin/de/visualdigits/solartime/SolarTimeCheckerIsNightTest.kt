@@ -1,4 +1,4 @@
-package de.visualdigits.solartime.boundary
+package de.visualdigits.solartime
 
 import de.visualdigits.solartime.SolarTime.isNight
 import org.assertj.core.api.Assertions
@@ -8,10 +8,11 @@ import java.time.ZoneId
 import java.time.ZonedDateTime
 
 @DisplayName("Is Night")
-internal class SunStateCheckerIsNightTest {
+class SolarTimeCheckerIsNightTest{
+
     @Test
     @DisplayName("Before dawn is night")
-    fun beforeDawn() {
+    fun testbeforeDawn() {
         val day = ZonedDateTime.of(2019, 1, 24, 1, 0, 0, 0, ZoneId.of("Europe/Berlin"))
         val latitude = 51.449680
         val longitude = 6.973370
@@ -24,7 +25,7 @@ internal class SunStateCheckerIsNightTest {
 
     @Test
     @DisplayName("After dusk is night")
-    fun afterDusk() {
+    fun testafterDusk() {
         val day = ZonedDateTime.of(2019, 1, 24, 23, 0, 0, 0, ZoneId.of("Europe/Berlin"))
         val latitude = 51.449680
         val longitude = 6.973370
@@ -37,7 +38,7 @@ internal class SunStateCheckerIsNightTest {
 
     @Test
     @DisplayName("While day is no night")
-    fun whileDay() {
+    fun testwhileDay() {
         val day = ZonedDateTime.of(2019, 1, 24, 12, 0, 0, 0, ZoneId.of("Europe/Berlin"))
         val latitude = 51.449680
         val longitude = 6.973370
