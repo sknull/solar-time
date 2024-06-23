@@ -14,12 +14,6 @@ This work is heavily inspired by https://github.com/caarmen/SunriseSunset. The f
 
 image:https://img.shields.io/maintenance/yes/2024.svg[Maintenance,link=https://github.com/sknull/solar-time]
 
-image:https://travis-ci.org/sknull/solar-time.svg?branch=main[Build Status,link=https://travis-ci.org/sknull/solar-time]
-
-image:https://codecov.io/gh/sknull/solar-time/branch/master/graph/badge.svg[Codecov Coverage,link=https://codecov.io/gh/sknull/solar-time]
-image:https://coveralls.io/repos/github/sknull/solar-time/badge.svg?branch=master&kill_cache=1[Coverage Status,link=https://coveralls.io/github/sknull/solar-time?branch=master]
-
-image:https://api.codeclimate.com/v1/badges/7bebabb71ca31cf2aa8d/maintainability[Maintainability,link=https://codeclimate.com/github/sknull/solar-time/maintainability]
 
 == Example Usage
 
