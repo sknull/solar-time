@@ -26,13 +26,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: mvn --batch-mode clean package -DskipTests -Pgithub
 
-  # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
+      # Single deploy job since we're just deploying
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Pages
