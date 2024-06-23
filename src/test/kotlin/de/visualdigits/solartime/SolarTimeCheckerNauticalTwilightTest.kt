@@ -21,8 +21,7 @@ class SolarTimeCheckerNauticalTwilightTest{
 
         val actual = isNauticalTwilight(day, latitude, longitude)
 
-        Assertions.assertThat(actual)
-            .isTrue()
+        Assertions.assertThat(actual).isTrue()
     }
 
     @Test

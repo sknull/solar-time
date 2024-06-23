@@ -4,6 +4,7 @@ import de.visualdigits.solartime.SolarTime.getDayPeriod
 import de.visualdigits.solartime.model.DayPeriod
 import de.visualdigits.solartime.util.CalculatorUtil
 import org.assertj.core.api.Assertions
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.time.ZoneId
 import java.time.ZonedDateTime
@@ -21,8 +22,7 @@ class SolarTimeCheckerDayPeriodTest{
 
             val actual = getDayPeriod(day, latitude, longitude)
 
-            Assertions.assertThat(actual)
-                .isEqualTo(DayPeriod.DAY)
+            assertEquals(DayPeriod.DAY, actual)
         }
 
     @Test
@@ -34,8 +34,7 @@ class SolarTimeCheckerDayPeriodTest{
 
             val actual = getDayPeriod(day, latitude, longitude)
 
-            Assertions.assertThat(actual)
-                .isEqualTo(DayPeriod.CIVIL_TWILIGHT)
+            assertEquals(DayPeriod.CIVIL_TWILIGHT, actual)
         }
 
     @Test
@@ -47,8 +46,7 @@ class SolarTimeCheckerDayPeriodTest{
 
             val actual = getDayPeriod(day, latitude, longitude)
 
-            Assertions.assertThat(actual)
-                .isEqualTo(DayPeriod.NAUTICAL_TWILIGHT)
+            assertEquals(DayPeriod.NAUTICAL_TWILIGHT, actual)
         }
 
     @Test
@@ -60,8 +58,7 @@ class SolarTimeCheckerDayPeriodTest{
 
             val actual = getDayPeriod(day, latitude, longitude)
 
-            Assertions.assertThat(actual)
-                .isEqualTo(DayPeriod.ASTRONOMICAL_TWILIGHT)
+            assertEquals(DayPeriod.ASTRONOMICAL_TWILIGHT, actual)
         }
 
     @Test
@@ -73,7 +70,6 @@ class SolarTimeCheckerDayPeriodTest{
 
             val actual = getDayPeriod(day, latitude, longitude)
 
-            Assertions.assertThat(actual)
-                .isEqualTo(DayPeriod.NIGHT)
+            assertEquals(DayPeriod.NIGHT, actual)
         }
 }

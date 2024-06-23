@@ -18,8 +18,7 @@ class SolarTimeChecker24HourDayTest{
 
             val actual = is24HourDayTime(day, latitude, longitude)
 
-            Assertions.assertThat(actual)
-                .isFalse()
+            Assertions.assertThat(actual).isFalse()
         }
 
     @Test
@@ -31,7 +30,6 @@ class SolarTimeChecker24HourDayTest{
 
         val actual = is24HourDayTime(day, latitude, longitude)
 
-        Assertions.assertThat(actual)
-            .isTrue()
+        Assertions.assertThat(actual).isTrue()
     }
 }

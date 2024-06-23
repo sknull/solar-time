@@ -17,7 +17,6 @@ class SolarTimeCheckerAstronomicalTwilightTest{
 
             val actual = isAstronomicalTwilight(day, latitude, longitude)
 
-            Assertions.assertThat(actual)
-                .isTrue()
+            Assertions.assertThat(actual).isTrue()
         }
 }

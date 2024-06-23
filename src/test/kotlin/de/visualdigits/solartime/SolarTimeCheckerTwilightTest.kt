@@ -18,8 +18,7 @@ class SolarTimeCheckerTwilightTest{
 
         val actual = isTwilight(day, latitude, longitude)
 
-        Assertions.assertThat(actual)
-            .isFalse()
+        Assertions.assertThat(actual).isFalse()
     }
 
     @Test
@@ -31,8 +30,7 @@ class SolarTimeCheckerTwilightTest{
 
         val actual = isTwilight(day, latitude, longitude)
 
-        Assertions.assertThat(actual)
-            .isTrue()
+        Assertions.assertThat(actual).isTrue()
     }
 
     @Test
@@ -44,8 +42,7 @@ class SolarTimeCheckerTwilightTest{
 
         val actual = isTwilight(day, latitude, longitude)
 
-        Assertions.assertThat(actual)
-            .isTrue()
+        Assertions.assertThat(actual).isTrue()
     }
 
     @Test
@@ -57,7 +54,6 @@ class SolarTimeCheckerTwilightTest{
 
         val actual = isTwilight(day, latitude, longitude)
 
-        Assertions.assertThat(actual)
-            .isTrue()
+        Assertions.assertThat(actual).isTrue()
     }
 }

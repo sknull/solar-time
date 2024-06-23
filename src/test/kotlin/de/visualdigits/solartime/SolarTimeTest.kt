@@ -1,10 +1,12 @@
 package de.visualdigits.solartime
 
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import java.time.LocalDateTime
 import java.time.OffsetDateTime
 import java.time.ZonedDateTime
 
+@Disabled("only for local testing")
 class SolarTimeTest {
 
     private val now = OffsetDateTime.now().toZonedDateTime()// .of(2024, 12,24, 12, 0, 0,0, ZoneId.systemDefault())

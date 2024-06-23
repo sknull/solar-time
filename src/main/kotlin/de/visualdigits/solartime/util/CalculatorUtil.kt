@@ -63,50 +63,6 @@ class CalculatorUtil {
             ?.let { duskEvent -> shiftDayToZoneOfOtherDay(duskEvent, day) }
     }
 
-    private fun calculateHourAngle(altitude: Altitude, latitudeRad: Double, sunDeclination: Double): Double? {
-        val omega = acos((sin(Math.toRadians(altitude.value)) - sin(latitudeRad) * sin(sunDeclination)) / (cos(latitudeRad) * cos(sunDeclination)))
-        return if (!isNaN(omega)) {
-            omega
-        } else {
-            null
-        }
-    }
-
-    private fun calculateJulianSunrise(
-        day: ZonedDateTime,
-        latitude: Double,
-        longitude: Double,
-        altitude: Altitude
-    ): Double? {
-        val maybeSunset = calculateJulianSunset(day, latitude, longitude, altitude)
-        return maybeSunset?.let { sunset: Double ->
-            val solarEquationVariables =
-                calculateSolarEquationVariables(day, longitude)
-            // Sunrise
-            solarEquationVariables.jtransit - (sunset - solarEquationVariables.jtransit)
-        }
-    }
-
-    private fun calculateJulianSunset(
-        day: ZonedDateTime,
-        latitude: Double,
-        longitude: Double,
-        altitude: Altitude
-    ): Double? {
-        val solarEquationVariables = calculateSolarEquationVariables(day, longitude)
-
-        val inverted = -longitude
-        val latitudeRad = Math.toRadians(latitude)
-
-        // Hour angle
-        val maybeOmega = calculateHourAngle(altitude, latitudeRad, solarEquationVariables.delta)
-
-        return maybeOmega?.let { omega ->
-            // Sunset
-            JulianConstants.JULIAN_DATE_2000_01_01 + JulianConstants.CONST_0009 + ((Math.toDegrees(omega) + inverted) / JulianConstants.CONST_360 + solarEquationVariables.n + (0.0053 * sin(solarEquationVariables.m)) - 0.0069 * sin(2 * solarEquationVariables.lambda))
-        }
-    }
-
     /**
      * Return intermediate variables used for calculating sunrise, sunset, and solar noon.
      *
@@ -184,13 +140,6 @@ class CalculatorUtil {
                 val noonWithMovedTimeZone = localTimeNoon.withZoneSameInstant(zone)
                 noonWithMovedTimeZone
             }
-    }
-
-    private fun shiftDayToZoneOfOtherDay(toBeShifted: ZonedDateTime?, otherDay: ZonedDateTime): ZonedDateTime {
-        val zone = otherDay.zone
-        val shifted = toBeShifted!!.withZoneSameInstant(zone)
-
-        return shifted
     }
 
     /**
@@ -297,5 +246,56 @@ class CalculatorUtil {
         val localZoned = gregorianDateUTC.withZoneSameInstant(utc)
 
         return localZoned
+    }
+
+    private fun calculateHourAngle(altitude: Altitude, latitudeRad: Double, sunDeclination: Double): Double? {
+        val omega = acos((sin(Math.toRadians(altitude.value)) - sin(latitudeRad) * sin(sunDeclination)) / (cos(latitudeRad) * cos(sunDeclination)))
+        return if (!isNaN(omega)) {
+            omega
+        } else {
+            null
+        }
+    }
+
+    private fun calculateJulianSunrise(
+        day: ZonedDateTime,
+        latitude: Double,
+        longitude: Double,
+        altitude: Altitude
+    ): Double? {
+        val maybeSunset = calculateJulianSunset(day, latitude, longitude, altitude)
+        return maybeSunset?.let { sunset: Double ->
+            val solarEquationVariables =
+                calculateSolarEquationVariables(day, longitude)
+            // Sunrise
+            solarEquationVariables.jtransit - (sunset - solarEquationVariables.jtransit)
+        }
+    }
+
+    private fun calculateJulianSunset(
+        day: ZonedDateTime,
+        latitude: Double,
+        longitude: Double,
+        altitude: Altitude
+    ): Double? {
+        val solarEquationVariables = calculateSolarEquationVariables(day, longitude)
+
+        val inverted = -longitude
+        val latitudeRad = Math.toRadians(latitude)
+
+        // Hour angle
+        val maybeOmega = calculateHourAngle(altitude, latitudeRad, solarEquationVariables.delta)
+
+        return maybeOmega?.let { omega ->
+            // Sunset
+            JulianConstants.JULIAN_DATE_2000_01_01 + JulianConstants.CONST_0009 + ((Math.toDegrees(omega) + inverted) / JulianConstants.CONST_360 + solarEquationVariables.n + (0.0053 * sin(solarEquationVariables.m)) - 0.0069 * sin(2 * solarEquationVariables.lambda))
+        }
+    }
+
+    private fun shiftDayToZoneOfOtherDay(toBeShifted: ZonedDateTime?, otherDay: ZonedDateTime): ZonedDateTime {
+        val zone = otherDay.zone
+        val shifted = toBeShifted!!.withZoneSameInstant(zone)
+
+        return shifted
     }
 }

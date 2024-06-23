@@ -1,6 +1,7 @@
 package de.visualdigits.solartime.util
 
 import org.assertj.core.api.Assertions
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvFileSource
@@ -11,17 +12,15 @@ import java.time.ZonedDateTime
 @DisplayName("Test conversion between gregorian and julian date")
 class DateConverterTest {
 
-    protected val calculatorUtil = CalculatorUtil()
+    private val calculatorUtil = CalculatorUtil()
 
     @DisplayName("gregorian to julian date conversion")
     @ParameterizedTest(name = "{index} => gregorian={0}, expected={1}")
     @CsvFileSource(numLinesToSkip = 1, resources = ["gregorian-to-julian-date.csv"])
     fun testTJulianDate(gregorian: ZonedDateTime?, expected: Double) {
-
         val actual = calculatorUtil.toJulianDate(gregorian!!)
 
-        Assertions.assertThat(actual)
-            .isEqualTo(expected)
+        assertEquals(expected, actual)
     }
 
     @DisplayName("julian to gregorian conversion")
