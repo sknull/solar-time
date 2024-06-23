@@ -1,21 +1,24 @@
-# exclude all
-/*
-
-# include git related files
-!.gitignore
-
-# include source
-!src/
-
-# Maven related files
-!pom.xml
-
-# CMS related files
-!README.md
-!LICENSE
-
-# CI related files
-!.travis.yml
-
-# Code Quality related files
-!sonar-project.properties
+Thumbs.db
+.DS_Store
+.gradle
+build/
+**/target/
+out/
+.micronaut/
+.idea
+*.iml
+*.ipr
+*.iws
+.project
+.settings
+.classpath
+.factorypath
+assets/
+**/cdk.out/
+**/.flattened-pom.xml
+**/dependency-reduced-pom.xml
+**/*.bkp
+**/*.dtmp
+/infra/cdk.context.json
+/pom.xml.versionsBackup
+/fortune.bgv
