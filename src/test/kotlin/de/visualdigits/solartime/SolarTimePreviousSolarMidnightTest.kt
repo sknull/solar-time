@@ -1,7 +1,6 @@
 package de.visualdigits.solartime
 
 import de.visualdigits.solartime.SolarTime.calculatePreviousSolarMidnight
-import de.visualdigits.solartime.util.CalculatorUtil
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Test
@@ -9,8 +8,6 @@ import java.time.ZoneId
 import java.time.ZonedDateTime
 
 class SolarTimePreviousSolarMidnightTest {
-
-    protected val calculatorUtil = CalculatorUtil()
 
     @Test
     fun testsolarMidnightIsNotPresent() {

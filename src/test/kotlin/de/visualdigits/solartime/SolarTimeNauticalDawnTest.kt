@@ -1,15 +1,12 @@
 package de.visualdigits.solartime
 
 import de.visualdigits.solartime.SolarTime.calculateNauticalDawn
-import de.visualdigits.solartime.util.CalculatorUtil
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
 class SolarTimeNauticalDawnTest {
-
-    protected val calculatorUtil = CalculatorUtil()
 
     @Test
     fun testIsPresent() {

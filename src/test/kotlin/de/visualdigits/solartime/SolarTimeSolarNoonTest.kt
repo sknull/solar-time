@@ -1,15 +1,12 @@
 package de.visualdigits.solartime
 
 import de.visualdigits.solartime.SolarTime.calculateSolarNoon
-import de.visualdigits.solartime.util.CalculatorUtil
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
 class SolarTimeSolarNoonTest {
-
-    protected val calculatorUtil = CalculatorUtil()
 
     @Test
     fun testsolarNoonIsPresent() {

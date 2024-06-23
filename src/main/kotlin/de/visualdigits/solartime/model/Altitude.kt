@@ -1,6 +1,10 @@
 package de.visualdigits.solartime.model
 
-enum class Altitude(val value: Double) {
+/**
+ * @see [Dawn article on wikipedia](https://en.wikipedia.org/wiki/Dawn)
+ */
+enum class Altitude(val degreesBelowHorizon: Double) {
+
     /**
      * The altitude of the sun (solar elevation angle) at the moment of sunrise or sunset: -0.833
      */
