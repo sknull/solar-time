@@ -3,6 +3,7 @@ package de.visualdigits.solartime.util
 import de.visualdigits.solartime.model.Altitude
 import de.visualdigits.solartime.model.JulianConstants
 import de.visualdigits.solartime.model.SolarEquationVariables
+import java.lang.Double.isNaN
 import java.time.ZoneId
 import java.time.ZoneOffset
 import java.time.ZonedDateTime
@@ -63,22 +64,12 @@ class CalculatorUtil {
     }
 
     private fun calculateHourAngle(altitude: Altitude, latitudeRad: Double, sunDeclination: Double): Double? {
-        val radAltitude = Math.toRadians(altitude.value)
-        val omega = acos((sin(radAltitude) - sin(latitudeRad) * sin(sunDeclination)) / (cos(latitudeRad) * cos(sunDeclination)))
-
-        return if (!java.lang.Double.isNaN(omega)) {
+        val omega = acos((sin(Math.toRadians(altitude.value)) - sin(latitudeRad) * sin(sunDeclination)) / (cos(latitudeRad) * cos(sunDeclination)))
+        return if (!isNaN(omega)) {
             omega
         } else {
             null
         }
-    }
-
-    fun is24HourDayTime(latitudeRad: Double, sunDeclination: Double): Boolean {
-        return tan(latitudeRad) * tan(sunDeclination) > 1
-    }
-
-    fun is24HourNightTime(latitudeRad: Double, sunDeclination: Double): Boolean {
-        return tan(latitudeRad) * tan(sunDeclination) < -1
     }
 
     private fun calculateJulianSunrise(
@@ -132,8 +123,7 @@ class CalculatorUtil {
         val julianDate = toJulianDate(day)
 
         // Calculate current Julian cycle (number of days since 2000-01-01).
-        val nstar =
-            julianDate - JulianConstants.JULIAN_DATE_2000_01_01 - JulianConstants.CONST_0009 - lt / JulianConstants.CONST_360
+        val nstar = julianDate - JulianConstants.JULIAN_DATE_2000_01_01 - JulianConstants.CONST_0009 - lt / JulianConstants.CONST_360
         val n = Math.round(nstar).toDouble()
 
         // Approximate solar noon
