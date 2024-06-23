@@ -60,4 +60,4 @@ For more examples check the https://github.com/sknull/solar-time/wiki/Examples[w
 
 == KDoc
 
-The KDOc of this project can be found link:https://sknull.github.io/solar-time[here,_target=blank]
+The KDOc of this project can be found link:https://sknull.github.io/solar-time[here,window=_blank]
