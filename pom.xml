@@ -248,7 +248,7 @@
                             <outputDir>${project.build.directory}/dokka</outputDir>
                             <includes>
                                 <include>
-                                    ${project.basedir}/src/main/kotlin/de/newsaktuell/contentitemmessage/packages.md
+                                    ${project.basedir}/src/main/kotlin/de/visualdigits/packages.md
                                 </include>
                             </includes>
                         </configuration>
@@ -270,7 +270,7 @@
                             <outputDir>${project.basedir}/docs/dokka</outputDir>
                             <includes>
                                 <include>
-                                    ${project.basedir}/src/main/kotlin/de/newsaktuell/contentitemmessage/packages.md
+                                    ${project.basedir}/src/main/kotlin/de/visualdigits/packages.md
                                 </include>
                             </includes>
                         </configuration>
