@@ -15,14 +15,14 @@ This work is heavily inspired by https://github.com/caarmen/SunriseSunset. The f
 image:https://img.shields.io/maintenance/yes/2024.svg[Maintenance,link=https://github.com/sknull/solar-time]
 image:https://github.com/sknull/solar-time/actions/workflows/github-ci.yml/badge.svg[Build Status,link=https://github.com/sknull/solar-time]
 
+== KDoc
 
-== Example Usage
+The KDOc of this project can be found link:https://sknull.github.io/solar-time[here,window=_blank]
 
-Entrypoint is the `SolarTime` object.
+== Examples
 
 [source,kotlin]
 ----
-
 val now = ZonedDateTime.now()
 val latitude = 51.449680
 val longitude = 6.973370
@@ -33,26 +33,8 @@ SolarTime.calculateNauticalDawn(now, latitude, longitude)
         ?.also {println("Nautical Dawn: $it") }
 ----
 
-____
-
-INFO: Nautical Dawn: 2019-06-25T03:15:46
-
-____
-
 [source,kotlin]
 ----
 val sunStateChecker = SolarTime.getSunStateChecker()
 println("is 24-hour day: ${sunStateChecker.is24HourDayTime(now, latitude, longitude)}")
 ----
-
-____
-
-INFO: is 24-hour day: false
-
-____
-
-For more examples check the https://github.com/sknull/solar-time/wiki/Examples[wiki]
-
-== KDoc
-
-The KDOc of this project can be found link:https://sknull.github.io/solar-time[here,window=_blank]
