@@ -5,10 +5,9 @@ Java Library, Calculate solar times like solar noon, sunrise, sunset, astronomic
 
 This work is heavily inspired by https://github.com/caarmen/SunriseSunset. The fundamental changes are:
 
-* requires Java 11+,
-* usage of Java 8 Time API (`ZonedDateTime` instead of `Calendar`),
-* splitting return results of dawn and dusk and
-* usage of `Optional` because `Empty` is a valid result for solar times.
+* requires Java 17+,
+* requires Kotlin 1.9+
+* complete rework to Kotlin
 
 ## Project Status
 
@@ -18,11 +17,7 @@ This work is heavily inspired by https://github.com/caarmen/SunriseSunset. The f
 
 [![Codecov Coverage](https://codecov.io/gh/sknull/solar-time/branch/master/graph/badge.svg)](https://codecov.io/gh/sknull/solar-time)
 [![Coverage Status](https://coveralls.io/repos/github/sknull/solar-time/badge.svg?branch=master&kill_cache=1)](https://coveralls.io/github/sknull/solar-time?branch=master)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=sknull_solar-time&metric=coverage)](https://sonarcloud.io/component_measures?id=sknull_solar-time&metric=coverage&view=list)
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=sknull_solar-time&metric=alert_status)](https://sonarcloud.io/dashboard?id=sknull_solar-time)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=sknull_solar-time&metric=security_rating)](https://sonarcloud.io/dashboard?id=sknull_solar-time)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=sknull_solar-time&metric=sqale_index)](https://sonarcloud.io/dashboard?id=sknull_solar-time)
 [![Maintainability](https://api.codeclimate.com/v1/badges/7bebabb71ca31cf2aa8d/maintainability)](https://codeclimate.com/github/sknull/solar-time/maintainability)
 
 ## Example Usage
