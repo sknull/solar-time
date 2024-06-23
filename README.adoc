@@ -23,18 +23,24 @@ The KDOc of this project can be found link:https://sknull.github.io/solar-time[h
 
 [source,kotlin]
 ----
-val now = ZonedDateTime.now()
-val latitude = 51.449680
-val longitude = 6.973370
+class SolarTimeTest {
 
-SolarTime.calculateNauticalDawn(now, latitude, longitude)
-        ?.map { it.withZoneSameInstant(ZoneId.systemDefault()) }
-        ?.map { it.toLocalDateTime }
-        ?.also {println("Nautical Dawn: $it") }
-----
+    private val now = OffsetDateTime.now().toZonedDateTime()// .of(2024, 12,24, 12, 0, 0,0, ZoneId.systemDefault())
+    // Coordinates of Hamburg, Germany
+    private val lat = 53.551
+    private val lon = 9.994
 
-[source,kotlin]
-----
-val sunStateChecker = SolarTime.getSunStateChecker()
-println("is 24-hour day: ${sunStateChecker.is24HourDayTime(now, latitude, longitude)}")
+    @Test
+    fun test() {
+        println("Astronomical dawn: ${SolarTime.calculateAstronomicalDawn(now, lat, lon)}")
+        println("Nautical dawn    : ${SolarTime.calculateNauticalDawn(now, lat, lon)}")
+        println("Civil dawn       : ${SolarTime.calculateCivilDawn(now, lat, lon)}")
+        println("Sunrise          : ${SolarTime.calculateSunrise(now, lat, lon)}")
+        println("Solar noon       : ${SolarTime.calculateSolarNoon(now, lat, lon)}")
+        println("Sunset           : ${SolarTime.calculateSunset(now, lat, lon)}")
+        println("Civil dusk       : ${SolarTime.calculateCivilDusk(now, lat, lon)}")
+        println("Nautical dusk    : ${SolarTime.calculateNauticalDusk(now, lat, lon)}")
+        println("Astronomical dusk: ${SolarTime.calculateAstronomicalDusk(now, lat, lon)}")
+    }
+}
 ----
