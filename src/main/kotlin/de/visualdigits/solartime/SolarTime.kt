@@ -40,124 +40,129 @@ object SolarTime {
     /**
      * Calculate the astronomical twilight time for the given date and given location.
      *
-     * @param day       The day for which to calculate astronomical twilight
+     * @param dateTime  The day for which to calculate astronomical twilight
      * @param latitude  the latitude of the location in degrees.
      * @param longitude the longitude of the location in degrees (West is negative)
      *
      * @return astronomical dawn or empty if there is no astronomical twilight (e.g. no twilight in Antarctica in December)
      */
-    fun calculateAstronomicalDawn(day: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
-        return calculateDawnEvent(day, latitude, longitude, Altitude.ASTRONOMICAL)
+    fun calculateAstronomicalDawn(dateTime: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
+        return calculateDawnEvent(dateTime, latitude, longitude, Altitude.ASTRONOMICAL)
     }
 
     /**
      * Calculate the astronomical twilight time for the given date and given location.
      *
-     * @param day       The day for which to calculate astronomical twilight
+     * @param dateTime  The day for which to calculate astronomical twilight
      * @param latitude  the latitude of the location in degrees.
      * @param longitude the longitude of the location in degrees (West is negative)
      *
      * @return astronomical dusk or empty if there is no astronomical twilight (e.g. no twilight in Antarctica in December)
      */
-    fun calculateAstronomicalDusk(day: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
-        return calculateDuskEvent(day, latitude, longitude, Altitude.ASTRONOMICAL)
+    fun calculateAstronomicalDusk(dateTime: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
+        return calculateDuskEvent(dateTime, latitude, longitude, Altitude.ASTRONOMICAL)
     }
 
     /**
      * Calculate the nautical twilight time for the given date and given location.
      *
-     * @param day       The day for which to calculate nautical twilight
+     * @param dateTime  The day for which to calculate nautical twilight
      * @param latitude  the latitude of the location in degrees.
      * @param longitude the longitude of the location in degrees (West is negative)
      *
      * @return nautical dawn or empty if there is no nautical twilight (e.g. no twilight in Antarctica in December)
      */
-    fun calculateNauticalDawn(day: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
-        return calculateDawnEvent(day, latitude, longitude, Altitude.NAUTICAL)
+    fun calculateNauticalDawn(dateTime: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
+        return calculateDawnEvent(dateTime, latitude, longitude, Altitude.NAUTICAL)
     }
 
     /**
      * Calculate the nautical twilight time for the given date and given location.
      *
-     * @param day       The day for which to calculate nautical twilight
+     * @param dateTime  The day for which to calculate nautical twilight
      * @param latitude  the latitude of the location in degrees.
      * @param longitude the longitude of the location in degrees (West is negative)
      *
      * @return nautical dusk or empty if there is no nautical twilight (e.g. no twilight in Antarctica in December)
      */
-    fun calculateNauticalDusk(day: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
-        return calculateDuskEvent(day, latitude, longitude, Altitude.NAUTICAL)
+    fun calculateNauticalDusk(dateTime: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
+        return calculateDuskEvent(dateTime, latitude, longitude, Altitude.NAUTICAL)
     }
 
     /**
      * Calculate the civil twilight time for the given date and given location.
      *
-     * @param day       The day for which to calculate civil twilight
+     * @param dateTime  The day for which to calculate civil twilight
      * @param latitude  the latitude of the location in degrees.
      * @param longitude the longitude of the location in degrees (West is negative)
      *
      * @return civil dawn or empty if there is no civil twilight (e.g. no twilight in Antarctica in December)
      */
-    fun calculateCivilDawn(day: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
-        return calculateDawnEvent(day, latitude, longitude, Altitude.CIVIL)
+    fun calculateCivilDawn(dateTime: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
+        return calculateDawnEvent(dateTime, latitude, longitude, Altitude.CIVIL)
     }
 
     /**
      * Calculate the civil twilight time for the given date and given location.
      *
-     * @param day       The day for which to calculate civil twilight
+     * @param dateTime  The day for which to calculate civil twilight
      * @param latitude  the latitude of the location in degrees.
      * @param longitude the longitude of the location in degrees (West is negative)
      *
      * @return civil dusk or empty if there is no civil twilight (e.g. no twilight in Antarctica in December)
      */
-    fun calculateCivilDusk(day: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
-        return calculateDuskEvent(day, latitude, longitude, Altitude.CIVIL)
+    fun calculateCivilDusk(dateTime: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
+        return calculateDuskEvent(dateTime, latitude, longitude, Altitude.CIVIL)
     }
 
     /**
      * Calculate the twilight time when to switch off lights.
      *
-     * @param day       The day for which to calculate civil twilight
+     * @param dateTime  The day for which to calculate civil twilight
      * @param latitude  the latitude of the location in degrees.
      * @param longitude the longitude of the location in degrees (West is negative)
      *
      * @return civil dawn or empty if there is no civil twilight (e.g. no twilight in Antarctica in December)
      */
-    fun calculateLightsOff(day: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
-        return calculateDawnEvent(day, latitude, longitude, Altitude.LIGHTS)
+    fun calculateLightsOff(dateTime: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
+        return calculateDawnEvent(dateTime, latitude, longitude, Altitude.LIGHTS)
     }
 
     /**
      * Calculate the twilight time to switch lights on.
      *
-     * @param day       The day for which to calculate civil twilight
+     * @param dateTime  The day for which to calculate civil twilight
      * @param latitude  the latitude of the location in degrees.
      * @param longitude the longitude of the location in degrees (West is negative)
      *
      * @return civil dusk or empty if there is no civil twilight (e.g. no twilight in Antarctica in December)
      */
-    fun calculateLightsOn(day: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
-        return calculateDuskEvent(day, latitude, longitude, Altitude.LIGHTS)
+    fun calculateLightsOn(dateTime: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
+        return calculateDuskEvent(dateTime, latitude, longitude, Altitude.LIGHTS)
     }
 
+    fun switchLightsn(dateTime: ZonedDateTime, latitude: Double, longitude: Double): Boolean {
+        val lightsOnToday = calculateLightsOn(dateTime, latitude, longitude)
+        val lightsOffTomorrow = calculateLightsOff(dateTime.plusDays(1), latitude, longitude)
+        return dateTime.isAfter(lightsOnToday) && dateTime.isBefore(lightsOffTomorrow)
+    }
 
-    fun calculateSunrise(day: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
-        return calculateDawnEvent(day, latitude, longitude, Altitude.SUNRISE_SUNSET)
+    fun calculateSunrise(dateTime: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
+        return calculateDawnEvent(dateTime, latitude, longitude, Altitude.SUNRISE_SUNSET)
     }
 
     /**
      * Calculate the solar noon time for the given date and given location.
      * This is based on the Wikipedia article on the Sunrise equation.
      *
-     * @param day         The day for which to calculate sunrise and sunset
-     * @param latitude  the latitude of the location in degrees.
+     * @param dateTime    The day for which to calculate sunrise and sunset
+     * @param latitude    the latitude of the location in degrees.
      * @param longitude   the longitude of the location in degrees (West is negative)
      * @return            a Calendar with the time set to solar noon for the given day.
      * @see [Sunrise equation on Wikipedia](http://en.wikipedia.org/wiki/Sunrise_equation)
      */
-    fun calculateSolarNoon(day: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
-        val solarEquationVariables = calculateSolarEquationVariables(day, longitude)
+    fun calculateSolarNoon(dateTime: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
+        val solarEquationVariables = calculateSolarEquationVariables(dateTime, longitude)
 
         // Add a check for Antarctica in June and December (sun always down or up, respectively).
         // In this case, jtransit will be filled in, but we need to check the hour angle omega for
@@ -174,36 +179,36 @@ object SolarTime {
             ?.let { _ ->
                 // Convert jtransit Gregorian dates, in UTC
                 val localTimeNoon = toGregorianDate(solarEquationVariables.jtransit)
-                val zone = day.zone
+                val zone = dateTime.zone
                 val noonWithMovedTimeZone = localTimeNoon.withZoneSameInstant(zone)
                 noonWithMovedTimeZone
             }
     }
 
-    fun calculateSunset(day: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
-        return calculateDuskEvent(day, latitude, longitude, Altitude.SUNRISE_SUNSET)
+    fun calculateSunset(dateTime: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
+        return calculateDuskEvent(dateTime, latitude, longitude, Altitude.SUNRISE_SUNSET)
     }
 
     fun calculatePreviousSolarMidnight(
-        day: ZonedDateTime,
+        dateTime: ZonedDateTime,
         latitude: Double,
         longitude: Double
     ): ZonedDateTime? {
-        val previousDay = day.minusDays(1)
+        val previousDateTime = dateTime.minusDays(1)
 
-        return calculateAstronomicalDusk(previousDay, latitude, longitude)
+        return calculateAstronomicalDusk(previousDateTime, latitude, longitude)
             ?.let { dusk: ZonedDateTime? ->
-                calculateAstronomicalDawn(day, latitude, longitude)
+                calculateAstronomicalDawn(dateTime, latitude, longitude)
                     ?.let { dawn: ZonedDateTime? -> calculateMidpoint(dusk, dawn) }
             }
     }
 
-    fun calculateNextSolarMidnight(day: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
-        val nextDay = day.plusDays(1)
+    fun calculateNextSolarMidnight(dateTime: ZonedDateTime, latitude: Double, longitude: Double): ZonedDateTime? {
+        val nextDateTime = dateTime.plusDays(1)
 
-        return calculateAstronomicalDusk(day, latitude, longitude)
+        return calculateAstronomicalDusk(dateTime, latitude, longitude)
             ?.let { dusk: ZonedDateTime? ->
-                calculateAstronomicalDawn(nextDay, latitude, longitude)
+                calculateAstronomicalDawn(nextDateTime, latitude, longitude)
                     ?.let { dawn: ZonedDateTime? -> calculateMidpoint(dusk, dawn) }
             }
     }
@@ -322,16 +327,16 @@ object SolarTime {
         return period
     }
 
-    fun is24HourDayTime(day: ZonedDateTime, latitude: Double, longitude: Double): Boolean {
-        val solarEquationVariables = calculateSolarEquationVariables(day, longitude)
+    fun is24HourDayTime(dateTime: ZonedDateTime, latitude: Double, longitude: Double): Boolean {
+        val solarEquationVariables = calculateSolarEquationVariables(dateTime, longitude)
         val sunDeclination = solarEquationVariables.delta
         val rads = Math.toRadians(latitude)
 
         return tan(rads) * tan(sunDeclination) > 1
     }
 
-    fun is24HourNightTime(day: ZonedDateTime, latitude: Double, longitude: Double): Boolean {
-        val solarEquationVariables = calculateSolarEquationVariables(day, longitude)
+    fun is24HourNightTime(dateTime: ZonedDateTime, latitude: Double, longitude: Double): Boolean {
+        val solarEquationVariables = calculateSolarEquationVariables(dateTime, longitude)
         val sunDeclination = solarEquationVariables.delta
         val rads = Math.toRadians(latitude)
 
@@ -416,7 +421,7 @@ object SolarTime {
      * @see [Converting from Julian day to Gregorian date, on Wikipedia](http://en.wikipedia.org/wiki/Julian_day.Gregorian_calendar_from_Julian_day_number)
      */
     fun toGregorianDate(julianDate: Double): ZonedDateTime {
-        // this shifts the epoch back by one half day,
+        // this shifts the epoch back by one half dateTime,
         // to start it at 00:00UTC, instead of 12:00 UTC
         val jd = (julianDate + 0.5).toInt()
 
@@ -487,35 +492,35 @@ object SolarTime {
         }
     }
 
-    private fun shiftDayToZoneOfOtherDay(toBeShifted: ZonedDateTime?, otherDay: ZonedDateTime): ZonedDateTime {
-        val zone = otherDay.zone
+    private fun shiftDayToZoneOfOtherDay(toBeShifted: ZonedDateTime?, otherDateTime: ZonedDateTime): ZonedDateTime {
+        val zone = otherDateTime.zone
         val shifted = toBeShifted!!.withZoneSameInstant(zone)
 
         return shifted
     }
 
     private fun calculateJulianSunrise(
-        day: ZonedDateTime,
+        dateTime: ZonedDateTime,
         latitude: Double,
         longitude: Double,
         altitude: Altitude
     ): Double? {
-        val maybeSunset = calculateJulianSunset(day, latitude, longitude, altitude)
+        val maybeSunset = calculateJulianSunset(dateTime, latitude, longitude, altitude)
         return maybeSunset?.let { sunset: Double ->
             val solarEquationVariables =
-                calculateSolarEquationVariables(day, longitude)
+                calculateSolarEquationVariables(dateTime, longitude)
             // Sunrise
             solarEquationVariables.jtransit - (sunset - solarEquationVariables.jtransit)
         }
     }
 
     private fun calculateJulianSunset(
-        day: ZonedDateTime,
+        dateTime: ZonedDateTime,
         latitude: Double,
         longitude: Double,
         altitude: Altitude
     ): Double? {
-        val solarEquationVariables = calculateSolarEquationVariables(day, longitude)
+        val solarEquationVariables = calculateSolarEquationVariables(dateTime, longitude)
 
         val inverted = -longitude
         val latitudeRad = Math.toRadians(latitude)
@@ -532,17 +537,17 @@ object SolarTime {
     /**
      * Return intermediate variables used for calculating sunrise, sunset, and solar noon.
      *
-     * @param day         The day for which to calculate the ecliptic longitude and jtransit
+     * @param dateTime    The day for which to calculate the ecliptic longitude and jtransit
      * @param longitude   the longitude of the location in degrees (West is negative)
      * @return a 2-element array with the ecliptic longitude (lambda) as the first element, and solar transit (jtransit) as the second element
      * @see [Sunrise equation on Wikipedia](http://en.wikipedia.org/wiki/Sunrise_equation)
      */
-    private fun calculateSolarEquationVariables(day: ZonedDateTime, longitude: Double): SolarEquationVariables {
+    private fun calculateSolarEquationVariables(dateTime: ZonedDateTime, longitude: Double): SolarEquationVariables {
         var lt = longitude
         lt = -lt
 
         // Get the given date as a Julian date.
-        val julianDate = toJulianDate(day)
+        val julianDate = toJulianDate(dateTime)
 
         // Calculate current Julian cycle (number of days since 2000-01-01).
         val nstar = julianDate - JulianConstants.JULIAN_DATE_2000_01_01 - JulianConstants.CONST_0009 - lt / JulianConstants.CONST_360
@@ -581,21 +586,21 @@ object SolarTime {
      * astronomical dawn
      */
     private fun calculateDawnEvent(
-        day: ZonedDateTime,
+        dateTime: ZonedDateTime,
         latitude: Double,
         longitude: Double,
         altitude: Altitude
     ): ZonedDateTime? {
-        return calculateJulianSunrise(day, latitude, longitude, altitude)
+        return calculateJulianSunrise(dateTime, latitude, longitude, altitude)
             ?.let { julianDate: Double -> toGregorianDate(julianDate) }
-            ?.let { sunrise -> shiftDayToZoneOfOtherDay(sunrise, day) }
+            ?.let { sunrise -> shiftDayToZoneOfOtherDay(sunrise, dateTime) }
     }
 
     /**
      * Calculate the sunrise and sunset times for the given date and given
      * location. This is based on the Wikipedia article on the Sunrise equation.
      *
-     * @param day       The day for which to calculate sunrise and sunset
+     * @param dateTime  The day for which to calculate sunrise and sunset
      * @param latitude  the latitude of the location in degrees.
      * @param longitude the longitude of the location in degrees (West is negative)
      * @return a two-element Gregorian Calendar array. The first element is the
@@ -603,14 +608,14 @@ object SolarTime {
      * @see [Sunrise equation on Wikipedia](http://en.wikipedia.org/wiki/Sunrise_equation)
      */
     private fun calculateDuskEvent(
-        day: ZonedDateTime,
+        dateTime: ZonedDateTime,
         latitude: Double,
         longitude: Double,
         altitude: Altitude
     ): ZonedDateTime? {
-        return calculateJulianSunset(day, latitude, longitude, altitude)
+        return calculateJulianSunset(dateTime, latitude, longitude, altitude)
             ?.let { julianDate: Double -> toGregorianDate(julianDate) }
-            ?.let { duskEvent -> shiftDayToZoneOfOtherDay(duskEvent, day) }
+            ?.let { duskEvent -> shiftDayToZoneOfOtherDay(duskEvent, dateTime) }
     }
 
     private fun inBetween(now: ZonedDateTime, early: TimeSpan, late: TimeSpan): Boolean {

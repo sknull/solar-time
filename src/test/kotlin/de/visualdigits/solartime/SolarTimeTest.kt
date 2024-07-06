@@ -4,12 +4,13 @@ import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import java.time.LocalDateTime
 import java.time.OffsetDateTime
+import java.time.ZoneId
 import java.time.ZonedDateTime
 
 @Disabled("only for local testing")
 class SolarTimeTest {
 
-    private val now = OffsetDateTime.now().toZonedDateTime()// .of(2024, 12,24, 12, 0, 0,0, ZoneId.systemDefault())
+    private val now = ZonedDateTime.now()
 
     // Coordinates of Hamburg, Germany
     private val lat = 53.551
@@ -28,5 +29,6 @@ class SolarTimeTest {
         println("Civil dusk       : ${SolarTime.calculateCivilDusk(now, lat, lon)}")
         println("Nautical dusk    : ${SolarTime.calculateNauticalDusk(now, lat, lon)}")
         println("Astronomical dusk: ${SolarTime.calculateAstronomicalDusk(now, lat, lon)}")
+        println("Lights on        ? ${SolarTime.switchLightsn(ZonedDateTime.of(2024,7,6,22,12,0,0, ZoneId.systemDefault()), lat, lon)}")
     }
 }
