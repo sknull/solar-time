@@ -2,8 +2,6 @@ package de.visualdigits.solartime
 
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
-import java.time.LocalDateTime
-import java.time.OffsetDateTime
 import java.time.ZoneId
 import java.time.ZonedDateTime
 
@@ -29,6 +27,6 @@ class SolarTimeTest {
         println("Civil dusk       : ${SolarTime.calculateCivilDusk(now, lat, lon)}")
         println("Nautical dusk    : ${SolarTime.calculateNauticalDusk(now, lat, lon)}")
         println("Astronomical dusk: ${SolarTime.calculateAstronomicalDusk(now, lat, lon)}")
-        println("Lights on        ? ${SolarTime.switchLightsn(ZonedDateTime.of(2024,7,6,22,12,0,0, ZoneId.systemDefault()), lat, lon)}")
+        println("Lights on        ? ${SolarTime.switchLightsOn(ZonedDateTime.of(2024,7,6,22,12,0,0, ZoneId.systemDefault()), lat, lon)}")
     }
 }

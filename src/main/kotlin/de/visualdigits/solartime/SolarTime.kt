@@ -141,7 +141,7 @@ object SolarTime {
         return calculateDuskEvent(dateTime, latitude, longitude, Altitude.LIGHTS)
     }
 
-    fun switchLightsn(dateTime: ZonedDateTime, latitude: Double, longitude: Double): Boolean {
+    fun switchLightsOn(dateTime: ZonedDateTime, latitude: Double, longitude: Double): Boolean {
         val lightsOnToday = calculateLightsOn(dateTime, latitude, longitude)
         val lightsOffTomorrow = calculateLightsOff(dateTime.plusDays(1), latitude, longitude)
         return dateTime.isAfter(lightsOnToday) && dateTime.isBefore(lightsOffTomorrow)
